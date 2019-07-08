@@ -47,11 +47,11 @@ p {
   margin: 0;
 }
 
-form {
+.flex-form {
   display: flex;
   flex-direction: column;
-  align-content: flex-end;
-  flex-flow: column wrap;
+  align-items: center;
+  margin-top: 30px;
 }
 
 input {
@@ -71,7 +71,7 @@ select {
 
 button {
   background-color: #64318a;
-  padding: 0px 20px;
+  padding: 0px 57px;
   border: 1px solid #64318a;
   margin: 5px;
   color: white;
@@ -84,14 +84,4 @@ button:hover {
   background-color: #ffffff;
   border: 1px solid #64318a;
   color: #64318a;
-}
-
-#toggleBtn {
-  background-color: #eaeff7;
-  border: none; 
-  font-size: 12px;
-  margin: -5px 42px 0px 0;
-  padding: 0;
-  color: #64318a;
-  float: right;
 }

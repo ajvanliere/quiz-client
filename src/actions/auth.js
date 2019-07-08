@@ -1,27 +1,29 @@
 import request from 'superagent';
+import baseUrl from '../config';
 
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
-export const LOGIN_SUCCESS_USER = 'LOGIN_SUCCESS_USER';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 
-const baseUrl = 'http://localhost:4000';
-
-const loginSuccess = jwt => ({
+const loginSuccess = token => ({
   type: LOGIN_SUCCESS,
-  jwt
+  payload: token
 });
 
-const loginSuccessUser = user => ({
-  type: LOGIN_SUCCESS_USER,
-  user
+const loginFailure = message => ({
+  type: LOGIN_FAILURE,
+  payload: message
 });
 
 export const login = (email, password) => dispatch => {
   request
     .post(`${baseUrl}/login`)
-    .send({ email: email, password: password })
+    .send({ login: email, password: password })
     .then(response => {
-      dispatch(loginSuccess(response.body.jwt))
-      dispatch(loginSuccessUser(response.body.user))
+      if (response.body.success && response.body.success === true) {
+        dispatch(loginSuccess(response.body))
+      } else {
+        dispatch(loginFailure(response.body))
+      }
     })
     .catch(console.error)
 };

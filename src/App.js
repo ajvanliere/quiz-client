@@ -6,6 +6,7 @@ import { Route } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
 
 import LoginFormContainer from './components/LoginFormContainer';
+import SignUpFormContainer from './components/SignUpFormContainer';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         >
           <div className="App">
             <Route exact path="/" component={LoginFormContainer} />
+            <Route exact path="/" component={SignUpFormContainer} />
           </div>
         </PersistGate>
       </Provider>

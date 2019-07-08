@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import { login } from '../actions/auth';
 import LoginForm from './LoginForm';
@@ -25,9 +26,13 @@ class LoginFormContainer extends React.Component {
   }
 
   renderRedirect = () => {
-    if (this.redirect) {
+    if (this.redirect && this.props.loginStatus && this.props.loginStatus.success === true) {
       return (
-        <div>You are now logged in</div>
+        <Redirect to='/quiz' />
+      )
+    } else if(this.redirect && this.props.loginStatus && this.props.loginStatus.success === false) {
+      return (
+        <div>{this.props.loginStatus.message} Please try again or register below.</div>
       )
     }
   }
@@ -42,4 +47,8 @@ class LoginFormContainer extends React.Component {
   }
 }
 
-export default connect(null, { login })(LoginFormContainer)
+const mapStateToProps = state => ({
+  loginStatus: state.loginStatus
+})
+
+export default connect(mapStateToProps, { login })(LoginFormContainer)

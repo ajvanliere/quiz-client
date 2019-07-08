@@ -1,13 +1,16 @@
-import { LOGIN_SUCCESS_USER } from '../actions/auth';
+import { LOGIN_SUCCESS, LOGIN_FAILURE } from '../actions/auth';
 
-const user = (state = null, action = {}) => {
+export const loginStatus = (state = null, action = {}) => {
   switch (action.type) {
-    case LOGIN_SUCCESS_USER: {
-      return action.user
+    case LOGIN_SUCCESS: {
+      return action.payload;
+    }
+    case LOGIN_FAILURE: {
+      return action.payload;
     }
     default:
-      return state
+      return state;
   }
 }
 
-export default user;
+export default loginStatus;
