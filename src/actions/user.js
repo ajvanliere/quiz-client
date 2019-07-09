@@ -1,8 +1,7 @@
 import request from 'superagent';
+import baseUrl from '../config';
 
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
-
-const baseUrl = 'http://localhost:4000';
 
 const registerSuccess = currentUser => ({
   type: REGISTER_SUCCESS,

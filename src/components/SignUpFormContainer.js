@@ -8,7 +8,6 @@ class SignUpFormContainer extends React.Component {
 
   onSubmit = (event) => {
     event.preventDefault()
-    window.location = "/lobby";
     this.props.registerUser(this.state)
     this.setState({
       name: '',
@@ -26,6 +25,7 @@ class SignUpFormContainer extends React.Component {
   render() {
     return (
       <div>
+        {this.renderRedirect()}
         <SignUpForm onSubmit={this.onSubmit} onChange={this.onChange} values={this.state} />
       </div>
     )
