@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import { store, persistor } from './store';
+import { Provider } from 'react-redux';
+import { Route } from 'react-router-dom';
+import { PersistGate } from 'redux-persist/integration/react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+import LoginFormContainer from './components/LoginFormContainer';
+import SignUpFormContainer from './components/SignUpFormContainer';
+
+class App extends Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <PersistGate
+          loading={null}
+          persistor={persistor}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          <div className="App">
+            <Route exact path="/" component={LoginFormContainer} />
+            <Route exact path="/" component={SignUpFormContainer} />
+          </div>
+        </PersistGate>
+      </Provider>
+    );
+  }
 }
 
 export default App;
