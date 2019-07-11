@@ -5,7 +5,7 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 
 const registerSuccess = currentUser => ({
   type: REGISTER_SUCCESS,
-  currentUser
+  payload: currentUser
 });
 
 export const registerUser = (data) => dispatch => {
