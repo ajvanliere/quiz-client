@@ -85,3 +85,18 @@ button:hover {
   border: 1px solid #64318a;
   color: #64318a;
 }
+
+button.next {
+  font-family: 'Montserrat', sans-serif;
+  padding: 0 20px;
+  margin-top: 20px;
+}
+
+input[type="radio"] {
+  vertical-align: middle;
+  margin: 8px;
+}
+
+label {
+  vertical-align: middle;
+}

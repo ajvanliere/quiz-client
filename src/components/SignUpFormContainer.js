@@ -25,7 +25,6 @@ class SignUpFormContainer extends React.Component {
   render() {
     return (
       <div>
-        {this.renderRedirect()}
         <SignUpForm onSubmit={this.onSubmit} onChange={this.onChange} values={this.state} />
       </div>
     )
